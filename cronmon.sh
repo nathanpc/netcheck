@@ -7,8 +7,14 @@
 ## Author: Nathan Campos <hi@nathancampos.me>
 
 # Configuration variables.
-logsdir="$(dirname "$0")/logs"
-logsfile="$logsdir/$(date '+%Y-%m-%d').log"
+scriptdir=$(dirname "$0")
+logsfile="$scriptdir/logs/$(date '+%Y-%m-%d').log"
+dailylink="$scriptdir/daily.log"
 
 # Run monitoring script and append its output to the logs.
 perl monitor.pl >> "$logsfile"
+
+if [ ! -e "$dailylink" ] || [ $(readlink "$dailylink") != "$logsfile" ]; then
+	ln -sf "$logsfile" "$dailylink"
+	echo "Updated daily.log to point to $logsfile"
+fi
