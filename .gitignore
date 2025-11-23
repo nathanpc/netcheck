@@ -1,9 +1,6 @@
-# Configuration file.
+# Configuration and log files.
 config.json
-
-# Database and log files.
 *.log
-*.sqlite
 
 # PHP Composer.
 composer.phar
