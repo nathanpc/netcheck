@@ -36,8 +36,8 @@ sub check_http {
 	# Check if we have a URL.
 	if (not defined $url) {
 		print "usage: $0 http url\n";
-		croak "Did not provide a URL for the HTTP check, you must pass a URL parameter " .
-			"after the HTTP command";
+		croak "Did not provide a URL for the HTTP check, you must pass a URL " .
+			"parameter after the HTTP command";
 	}
 
 	# Set up LWP.
@@ -51,10 +51,12 @@ sub check_http {
 	my $resp = $ua->get($url);
 	my $time_req = round((Time::HiRes::time() - $time_start) * 1000);
 	if ($resp->is_success) {
-		print "$time_start\tPASS\tHTTP\t$time_req\t$url\t" . $resp->status_line . "\n";
+		print "$time_start\tPASS\tHTTP\t$time_req\t$url\t" .
+			$resp->status_line . "\n";
 		$success = 1;
 	} else {
-		print "$time_start\tFAIL\tHTTP\t$time_req\t$url\t" . $resp->status_line . "\n";
+		print "$time_start\tFAIL\tHTTP\t$time_req\t$url\t" .
+			$resp->status_line . "\n";
 	}
 
 	return $success;
@@ -80,7 +82,7 @@ sub main {
 	# Ensure we have the minimum number of arguments required.
 	if (scalar(@ARGV) < 2) {
 		print "usage: $0 protocol args\n";
-		croak "Failed to provide the minimum number of arguments for the script";
+		croak "Failed to provide minimum number of arguments for the script";
 	}
 
 	# Load configuration and perform a check.

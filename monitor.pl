@@ -18,7 +18,8 @@ sub check_monitored {
 
 	# Go through each monitored site.
 	foreach my $site (@monitored) {
-		$failures += NetCheck::Check::check($site->{'proto'}, $site->{'url'}, $timeout);
+		$failures += NetCheck::Check::check($site->{'proto'}, $site->{'url'},
+			$timeout);
 	}
 
 	return $failures;

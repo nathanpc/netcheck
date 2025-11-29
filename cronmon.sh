@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ## cronmon.sh
-## Simplifies the monitoring process when called via cron and automatically handles log
-## rotation.
+## Simplifies the monitoring process when called via cron and automatically
+## handles log rotation.
 ##
 ## Author: Nathan Campos <hi@nathancampos.me>
 
